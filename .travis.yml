@@ -1,0 +1,9 @@
+sudo: required # super user permission
+services:
+  - docker
+
+before_intall:
+  - docker build -t tak113/docker-react-test -f Dockerfile.dev .
+
+script:
+  -  docker run tak113/docker-react-test npm run test -- --coverage
