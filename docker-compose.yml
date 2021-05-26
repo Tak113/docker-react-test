@@ -1,0 +1,22 @@
+# version of docker compose
+version: '3'
+
+# describe what container/services you would like to use
+services:
+  web:
+    build:
+      context: . # specify folder
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - /usr/app/node_modules
+      - .:/usr/app
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /usr/app/node_modules
+      - .:/usr/app
+    command: ["npm", "run", "test"] # overwrite command (CMD[])
