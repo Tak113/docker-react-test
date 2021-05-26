@@ -2,7 +2,7 @@ sudo: required # super user permission
 services:
   - docker
 
-before_intall:
+before_install:
   - docker build -t tak113/docker-react-test -f Dockerfile.dev .
 
 script:
